@@ -1,0 +1,71 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+
+    <!-- Filter the Title   -->
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">Filter by:</div>
+            <div class="col-md-4">
+                <input type="text" [(ngModel)]="listFilter" />
+            </div>
+        </div>
+
+        <div class="row" [hidden]="!listFilter">
+            <div class="col-md-6">
+                <h3>Movies filtered by: {{listFilter}}</h3>
+            </div>
+        </div>
+
+        <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+
+        <div class="table-responsive">
+            <table class="table" *ngIf="movies && movies.length">
+                <thead>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-info" 
+                                (click)="toggleImage()">
+                                {{showImage ? "Hide" : "Show"}} Poster
+                            </button>
+                        </td>
+                        <td>Title</td>
+                        <td>Director</td>
+                        <td>Release Date</td>
+                        <td>MPAA Rating</td>
+                        <td>DVD Price</td>
+                        <td>5 Star Rating</td>
+                        <td>Audience Approval</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let movie of filteredMovies'>
+                        <td>
+                            <img *ngIf="showImage && movie.imageurl" 
+                                 [style.width.px]="50"
+                                 [style.margin.px]="2" 
+                                 [src]="movie.imageurl" 
+                                 [title]="movie.title">
+                        </td>
+                        <td><a [routerLink]="['/movies', movie.id]">{{ movie.title }}</a></td>
+                        <td>{{ movie.director }}</td>
+                        <td>{{ movie.releaseDate | date}}</td>
+                        <td>{{ movie.mpaa | uppercase | convertToSpaces: '-'}}</td>
+                        <td>{{ movie.price | currency:'USD':true}}</td>
+                        <td>
+                            <mh-star [rating]="movie.starRating"></mh-star>
+                        </td>
+                        <td>{{ movie.approvalRating | percent: '1.0-0'}}</td>
+                        <td>
+                            <a class="btn btn-primary" 
+                               [routerLink]="['/movies', movie.id, 'edit']">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <a class="navbar-brand">{{pageTitle}}</a>
+        <ul class="nav navbar-nav">
+            <li routerLinkActive="active">
+                <a routerLink='/welcome'>Home</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a routerLink='/movies'>Movie List</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a routerLink="['/movies', 0, 'edit']">Add Movie</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="authService.isLoggedIn()">
+                <a routerLink='/login'>Welcome {{ authService.currentUser.userName }}</a>
+            </li>
+            <li *ngIf="!authService.isLoggedIn()">
+                <a routerLink='/login'>Log In</a>
+            </li>
+            <li *ngIf="authService.isLoggedIn()">
+                <a (click)="logOut()" style="cursor: pointer">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>

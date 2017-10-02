@@ -1,0 +1,129 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+
+    <div class="panel-body" *ngIf='movie'>
+        <form class="form-horizontal" 
+              #editForm="ngForm"  
+              (ngSubmit)="saveMovie(editForm)">
+            <fieldset>
+                <div class="form-group" 
+                     [ngClass]="{'has-error': (titleVar.touched || titleVar.dirty) && !titleVar.valid }">
+                    <label class="col-md-2 control-label" 
+                           for="inputMovieTitle">Movie Title</label>
+
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                                id="inputMovieTitle" 
+                                type="text" 
+                                placeholder="Title (required)" 
+                                required 
+                                minlength="3" 
+                                maxlength="50"
+                                [(ngModel)] = "movie.title"
+                                name="title"
+                                #titleVar = "ngModel" />
+                        <span class="help-block" *ngIf="(titleVar.touched || titleVar.dirty) && titleVar.errors">
+                            <span *ngIf="titleVar.errors.required">
+                                Please enter a movie title.
+                            </span>
+                        <span *ngIf="titleVar.errors.minlength">
+                                The movie title must be at least 3 characters.
+                            </span>
+                        <span *ngIf="titleVar.errors.maxlength">
+                                The movie title cannot exceed 50 characters.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group" 
+                     [ngClass]="{'has-error': (directorVar.touched || directorVar.dirty) && !directorVar.valid }">
+                    <label class="col-md-2 control-label" for="inputMovieDirector">Director</label>
+
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                                id="inputMovieDirector" 
+                                type="text" 
+                                placeholder="Director (required)" 
+                                required 
+                                minlength="5" 
+                                maxlength="50"
+                                [(ngModel)] = "movie.director"
+                                name="director"
+                                #directorVar = "ngModel" />
+                        <span class="help-block" *ngIf="(directorVar.touched || directorVar.dirty) && directorVar.errors">
+                            <span *ngIf="directorVar.errors.required">
+                                Please enter the director's name.
+                            </span>
+                        <span *ngIf="directorVar.errors.minlength">
+                                The name must be at least 5 characters.
+                            </span>
+                        <span *ngIf="directorVar.errors.maxlength">
+                                The name cannot exceed 50 characters.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="form-group" 
+                     [ngClass]="{'has-error': (starRatingVar.touched || starRatingVar.dirty) && !starRatingVar.valid}">
+                    <label class="col-md-2 control-label" 
+                           for="inputStarRating">Star Rating (1-5)</label>
+
+                    <div class="col-md-8">
+                        <input class="form-control" 
+                                id="inputStarRating" 
+                                type="text" 
+                                placeholder="Rating"
+                                mhRange="1,5"
+                                [(ngModel)] = "movie.starRating"
+                                name="starRating"
+                                #starRatingVar = "ngModel" />
+                        <span class="help-block" *ngIf="(starRatingVar.touched || starRatingVar.dirty) && starRatingVar.errors">
+                            <span *ngIf="starRatingVar.errors.range">
+                                Rate the movie between 1 (lowest) and 5 (highest).
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label" 
+                           for="inputMovieDescription">Description</label>
+
+                    <div class="col-md-8">
+                        <textarea class="form-control" 
+                                id="inputMovieDescription" 
+                                placeholder="Description"
+                                rows=3
+                                [(ngModel)] = "movie.description"
+                                name="description"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4 col-md-offset-2">
+                        <span>
+                            <button class="btn btn-primary"
+                                    type="submit"
+                                    style="width:80px;margin-right:10px"
+                                    [disabled]='!editForm.valid'>
+                                Save
+                            </button>
+                        </span>
+                        <span>
+                            <a class="btn btn-default"
+                               style="width:80px"
+                               [routerLink]="['/movies']">
+                                Cancel
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+</div>
