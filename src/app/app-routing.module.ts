@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { AuthGuard } from './user/auth-guard.service';
+
 import { ShellComponent } from './home/shell.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './home/page-not-found.component';
+
+// Feature modules
+import { MovieModule } from './movies/movie.module';
 
 @NgModule({
     imports: [
@@ -13,6 +18,11 @@ import { PageNotFoundComponent } from './home/page-not-found.component';
                 component: ShellComponent,
                 children: [
                     { path: 'welcome', component: WelcomeComponent },
+                    {
+                        path: 'movies',
+                        canActivate: [AuthGuard],
+                        loadChildren: () => MovieModule
+                    },
                     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
                 ]
             },

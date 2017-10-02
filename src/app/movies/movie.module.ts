@@ -18,16 +18,10 @@ import { ShellComponent } from '../home/shell.component';
     SharedModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      {
-        path: '',
-        component: ShellComponent,
-        children: [
-          { path: 'movies', component: MovieListComponent },
-          { path: 'movies/:id', component: MovieDetailComponent },
-          { path: 'movies/:id/edit', component: MovieEditComponent },
-          { path: 'movies/:id/editReactive', component: MovieEditReactiveComponent }
-        ]
-      }
+      { path: '', component: MovieListComponent },
+      { path: ':id', component: MovieDetailComponent },
+      { path: ':id/edit', component: MovieEditComponent },
+      { path: ':id/editReactive', component: MovieEditReactiveComponent }
     ])
   ],
   declarations: [

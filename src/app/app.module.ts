@@ -12,14 +12,12 @@ import { PageNotFoundComponent } from './home/page-not-found.component';
 
 /* Feature Modules */
 import { UserModule } from './user/user.module';
-import { MovieModule } from './movies/movie.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
     UserModule,
-    MovieModule,
     AppRoutingModule
   ],
   declarations: [
