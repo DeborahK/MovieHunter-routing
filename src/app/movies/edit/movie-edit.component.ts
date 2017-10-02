@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { IMovie } from './movie';
-import { MovieService } from './movie.service';
+import { IMovie } from '../movie';
+import { MovieService } from '../movie.service';
 
 @Component({
     templateUrl: './movie-edit.component.html',
@@ -82,7 +82,7 @@ export class MovieEditComponent implements OnInit {
     }
 
     onSaveComplete(message?: string): void {
-        this.errorMessage = message;
+        console.log(message);
         this.reset();
         // Navigate back to the movie list
         this.router.navigate(['/movies']);

@@ -24,6 +24,14 @@
             <div class="col-md-10">{{ movie.mpaa | uppercase}}</div>
         </div>
         <div class="row">
+            <div class="col-md-2">Category: </div>
+            <div class="col-md-10">{{ movie.category }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Tags:</div>
+            <div class="col-md-10">{{movie.tags}}</div>
+        </div>
+        <div class="row">
             <div class="col-md-2">Star Rating: </div>
             <div class="col-md-10">
                 <mh-star [rating]="movie.starRating"></mh-star>

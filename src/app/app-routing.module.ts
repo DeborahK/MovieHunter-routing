@@ -20,8 +20,8 @@ import { MovieModule } from './movies/movie.module';
                     { path: 'welcome', component: WelcomeComponent },
                     {
                         path: 'movies',
-                        canActivate: [AuthGuard],
-                        loadChildren: () => MovieModule
+                        loadChildren: () => MovieModule,
+                        canActivate: [AuthGuard]
                     },
                     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
                 ]

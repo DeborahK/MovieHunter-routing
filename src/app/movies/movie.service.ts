@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
@@ -8,26 +8,30 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/of';
 
 import { IMovie } from './movie';
 
 @Injectable()
 export class MovieService {
-    private moviesUrl = './api/movies/movies.json';
+    private moviesUrl = 'api/movies';
 
     constructor(private http: HttpClient) { }
 
     getMovies(): Observable<IMovie[]> {
         return this.http.get<IMovie[]>(this.moviesUrl)
-            .do(data => console.log(JSON.stringify(data)))
-            .catch(this.handleError);
+                        .do(data => console.log(JSON.stringify(data)))
+                        .catch(this.handleError);
     }
 
     getMovie(id: number): Observable<IMovie> {
-        return this.http.get<IMovie[]>(this.moviesUrl)
-            .map((movies: IMovie[]) => this.handleMap(movies, id))
-            .do(data => console.log('Data: ' + JSON.stringify(data)))
-            .catch(this.handleError);
+        if (id === 0) {
+            return Observable.of(this.initializeMovie());
+        };
+        const url = `${this.moviesUrl}/${id}`;
+        return this.http.get<IMovie>(url)
+                        .do(data => console.log('Data: ' + JSON.stringify(data)))
+                        .catch(this.handleError);
     }
 
     private handleError(err: HttpErrorResponse): ErrorObservable {
@@ -59,12 +63,52 @@ export class MovieService {
         return movies.find(m => m.id === id);
     }
 
-    deleteMovie(id: number) {
-        alert('This would delete the movie');
+    deleteMovie(id: number): Observable<Response> {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+        const url = `${this.moviesUrl}/${id}`;
+        return this.http.delete<IMovie>(url, { headers: headers} )
+            .do(data => console.log('deleteMovie: ' + JSON.stringify(data)))
+            .catch(this.handleError);
     }
 
-    saveMovie(movie: IMovie) {
-        alert('This would save the movie');
+    saveMovie(movie: IMovie): Observable<IMovie> {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        if (movie.id === 0) {
+            return this.createMovie(movie, headers);
+        }
+        return this.updateMovie(movie, headers);
+    }
 
+    private createMovie(movie: IMovie, headers: HttpHeaders): Observable<IMovie> {
+        movie.id = undefined;
+        return this.http.post<IMovie>(this.moviesUrl, movie,  { headers: headers} )
+            .do(data => console.log('createMovie: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    private initializeMovie(): IMovie {
+        // Return an initialized object
+        return {
+            'id': 0,
+            'approvalRating': null,
+            'description': '',
+            'director': '',
+            'imageurl': '',
+            'mpaa': '',
+            'price': null,
+            'releaseDate': '',
+            'starRating': null,
+            'title': '',
+            'category': '',
+            'tags': []
+        };
+    }
+
+    private updateMovie(movie: IMovie, headers: HttpHeaders): Observable<IMovie> {
+        const url = `${this.moviesUrl}/${movie.id}`;
+        return this.http.put<IMovie>(url, movie, { headers: headers} )
+            .do(data => console.log('updateMovie: ' + JSON.stringify(data)))
+            .catch(this.handleError);
     }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
-import { IMovie } from './movie';
+import { IMovie } from '../movie';
 
 @Component({
     templateUrl: './movie-edit-info.component.html'
