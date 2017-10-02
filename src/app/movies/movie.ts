@@ -10,4 +10,6 @@ export interface IMovie {
     releaseDate: string;
     starRating: number;
     title: string;
+    category: string;
+    tags?: string[];
 }

@@ -51,9 +51,19 @@ export class MovieService {
                 'price': null,
                 'releaseDate': '',
                 'starRating': null,
-                'title': ''
+                'title': '',
+                'category': '',
+                'tags': []
             };
         }
         return movies.find(m => m.id === id);
+    }
+
+    deleteMovie(id: number) {
+
+    }
+
+    saveMovie(movie: IMovie) {
+
     }
 }
