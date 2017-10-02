@@ -9,7 +9,9 @@
         "title": "The Lord of the Rings: The Fellowship of the Ring",
         "price": 12.95,
         "starRating": 4.88,
-        "approvalRating": 0.97
+        "approvalRating": 0.97,
+        "category": "action",
+        "tags": ["action", "adventure", "hobbits"]
     },
     {
         "director": "Peter Jackson",
@@ -21,7 +23,9 @@
         "title": "The Lord of the Rings: The Two Towers",
         "price": 14.95,
         "starRating": 4.2,
-        "approvalRating": 0.94
+        "approvalRating": 0.94,
+        "category": "action",
+        "tags": ["action", "adventure", "hobbits"]
     },
     {
         "director": "Peter Jackson",
@@ -33,7 +37,9 @@
         "title": "The Lord of the Rings: The Return of the King",
         "price": 15.95,
         "starRating": 4.5,
-        "approvalRating": 0.9895
+        "approvalRating": 0.9895,
+        "category": "action",
+        "tags": ["action", "adventure", "hobbits"]
     },
     {
         "director": "Fred Wolf",
@@ -45,7 +51,9 @@
         "title": "The Point",
         "price": 9.95,
         "starRating": 4.9,
-        "approvalRating": 0.9295
+        "approvalRating": 0.9295,
+        "category": "animation",
+        "tags": ["action", "animation"]
     },
     {
         "director": "Chris Columbus",
@@ -57,6 +65,8 @@
         "title": "Pixels",
         "price": 5.59,
         "starRating": 2.7,
-        "approvalRating": 0.17
+        "approvalRating": 0.17,
+        "category": "animation",
+        "tags": ["action", "animation"]
     }
 ]

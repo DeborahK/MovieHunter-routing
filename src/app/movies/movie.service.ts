@@ -60,10 +60,11 @@ export class MovieService {
     }
 
     deleteMovie(id: number) {
-
+        alert('This would delete the movie');
     }
 
     saveMovie(movie: IMovie) {
+        alert('This would save the movie');
 
     }
 }

@@ -11,16 +11,22 @@ import { MovieEditTagsComponent } from './movie-edit-tags.component';
 
 import { MovieService } from './movie.service';
 import { MovieParameterService } from './movie-parameter.service';
-import { ShellComponent } from '../home/shell.component';
+import { MovieResolver } from './movie-resolver.service';
+import { MovieEditGuard } from './movie-guard.service';
 
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild([
       { path: '', component: MovieListComponent },
-      { path: ':id', component: MovieDetailComponent },
+      { 
+        path: ':id', 
+        resolve: { product: MovieResolver },        
+        component: MovieDetailComponent 
+      },
       {
         path: ':id/edit',
+        resolve: { movie: MovieResolver },        
         component: MovieEditComponent,
         children: [
           { path: '', redirectTo: 'info', pathMatch: 'full' },
@@ -39,7 +45,9 @@ import { ShellComponent } from '../home/shell.component';
   ],
   providers: [
     MovieService,
-    MovieParameterService
+    MovieParameterService,
+    MovieResolver,
+    MovieEditGuard
   ]
 })
 export class MovieModule { }
