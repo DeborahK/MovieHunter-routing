@@ -17,7 +17,7 @@ import { PageNotFoundComponent } from './home/page-not-found.component';
                 ]
             },
             { path: '**', component: PageNotFoundComponent }
-        ], { enableTracing: true })
+        ]) // , { enableTracing: true })
     ],
     exports: [RouterModule]
 })

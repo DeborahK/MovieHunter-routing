@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 
 import { IUser } from './user';
-import { MessageService } from '../core/message.service';
 
 @Injectable()
 export class AuthService {
     currentUser: IUser;
     redirectUrl: string;
 
-    constructor(private messageService: MessageService) {  }
+    constructor() {  }
 
     isLoggedIn(): boolean {
         return !!this.currentUser;
@@ -23,7 +22,6 @@ export class AuthService {
             userName: userName,
             isAdmin: false
         };
-        this.messageService.addMessage(`User: ${this.currentUser.userName} logged in`);
     }
 
     logout(): void {
