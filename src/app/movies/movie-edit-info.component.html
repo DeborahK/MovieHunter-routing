@@ -46,8 +46,14 @@
                 <label class="col-md-2 control-label" for="inputStarRating">Star Rating (1-5)</label>
 
                 <div class="col-md-8">
-                    <input class="form-control" id="inputStarRating" type="text" placeholder="Rating" mhRange="1,5" [(ngModel)]="movie.starRating"
-                        name="starRating" #starRatingVar="ngModel" />
+                    <input class="form-control" 
+                           id="inputStarRating" 
+                           type="text" 
+                           placeholder="Rating" 
+                           mhRange="1,5" 
+                           [(ngModel)]="movie.starRating"
+                           name="starRating" 
+                           #starRatingVar="ngModel" />
                     <span class="help-block" *ngIf="(starRatingVar.touched || starRatingVar.dirty) && starRatingVar.errors">
                    <span *ngIf="starRatingVar.errors.range">
                        Rate the movie between 1 (lowest) and 5 (highest).

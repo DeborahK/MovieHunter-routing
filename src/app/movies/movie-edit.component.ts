@@ -105,10 +105,11 @@ export class MovieEditComponent implements OnInit {
             this.movie.title.length >= 3 &&
             this.movie.title.length <= 50 &&
             this.movie.director &&
-            this.movie.title.length >= 5 &&
-            this.movie.title.length <= 50 &&
-            this.movie.starRating >= 1 &&
-            this.movie.starRating <= 5
+            this.movie.director.length >= 5 &&
+            this.movie.director.length <= 50 &&
+            (!this.movie.starRating ||
+              this.movie.starRating >= 1 &&
+              this.movie.starRating <= 5)
             ) {
             this.dataIsValid['info'] = true;
         } else {
