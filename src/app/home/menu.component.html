@@ -9,6 +9,9 @@
                 <a routerLink='/movies'>Movie List</a>
             </li>
             <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a routerLink='/movies/search'>Advanced Search</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <a [routerLink]="['/movies', 0, 'edit']">Add Movie</a>
             </li>
         </ul>

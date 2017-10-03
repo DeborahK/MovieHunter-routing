@@ -13,12 +13,14 @@ import { MovieService } from './movie.service';
 import { MovieParameterService } from './movie-parameter.service';
 import { MovieResolver } from './movie-resolver.service';
 import { MovieEditGuard } from './edit/movie-edit-guard.service';
+import { MovieSearchComponent } from './search/movie-search.component';
 
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild([
       { path: '', component: MovieListComponent },
+      { path: 'search', component: MovieSearchComponent },
       {
         path: ':id',
         resolve: { product: MovieResolver },
@@ -41,7 +43,8 @@ import { MovieEditGuard } from './edit/movie-edit-guard.service';
     MovieDetailComponent,
     MovieEditComponent,
     MovieEditInfoComponent,
-    MovieEditTagsComponent
+    MovieEditTagsComponent,
+    MovieSearchComponent
   ],
   providers: [
     MovieService,
