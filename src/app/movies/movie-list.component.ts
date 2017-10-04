@@ -34,9 +34,9 @@ export class MovieListComponent implements OnInit {
                 private movieParameterService: MovieParameterService,
                 private route: ActivatedRoute) { }
 
-    ngOnInit(): void { 
+    ngOnInit(): void {
         this.route.queryParams.subscribe(param => {
-            this.pageTitle = 'Movie List';   
+            this.pageTitle = 'Movie List';
             this.getMovies();
         });
     }
@@ -62,15 +62,18 @@ export class MovieListComponent implements OnInit {
         }
     }
 
-    // Advanced search  
+    // Advanced search
     performSearch(movies: IMovie[]): IMovie[] {
         const params = this.route.snapshot.queryParamMap;
         if (params.keys.length) {
             this.pageTitle = 'Movie List From Advanced Search';
             return movies.filter((movie: IMovie) =>
-                (params.get('title') ? movie.title.toLocaleLowerCase().indexOf(params.get('title').toLocaleLowerCase()) !== -1 : true) &&
-                (params.get('director') ? movie.director.toLocaleLowerCase().indexOf(params.get('director').toLocaleLowerCase()) !== -1: true) &&
-                (params.get('description') ? movie.description.toLocaleLowerCase().indexOf(params.get('description').toLocaleLowerCase()) !== -1 : true) &&
+                (params.get('title') ?
+                    movie.title.toLocaleLowerCase().indexOf(params.get('title').toLocaleLowerCase()) !== -1 : true) &&
+                (params.get('director') ?
+                    movie.director.toLocaleLowerCase().indexOf(params.get('director').toLocaleLowerCase()) !== -1 : true) &&
+                (params.get('description') ?
+                    movie.description.toLocaleLowerCase().indexOf(params.get('description').toLocaleLowerCase()) !== -1 : true) &&
                 (params.get('minStarRating') ? movie.starRating >= +params.get('minStarRating') : true) &&
                 (params.get('maxStarRating') ? movie.starRating <= +params.get('maxStarRating') : true)
             );

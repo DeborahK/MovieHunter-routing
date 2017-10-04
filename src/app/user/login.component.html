@@ -13,7 +13,12 @@
                             <label class="col-md-2 control-label" for="userNameId">User Name</label>
 
                             <div class="col-md-8">
-                                <input class="form-control" id="userNameId" type="text" placeholder="User Name (required)" required (ngModel)="userName"
+                                <input class="form-control" 
+                                       id="userNameId" 
+                                       type="text" 
+                                       placeholder="User Name (required)" 
+                                       required
+                                       ngModel
                                     name="userName" #userNameVar="ngModel" />
                                 <span class="help-block" *ngIf="(userNameVar.touched ||
                                                                  userNameVar.dirty) &&
@@ -31,7 +36,12 @@
                             <label class="col-md-2 control-label" for="passwordId">Password</label>
 
                             <div class="col-md-8">
-                                <input class="form-control" id="passwordId" type="password" placeholder="Password (required)" required (ngModel)="password"
+                                <input class="form-control" 
+                                       id="passwordId" 
+                                       type="password" 
+                                       placeholder="Password (required)" 
+                                       required
+                                       ngModel
                                     name="password" #passwordVar="ngModel" />
                                 <span class="help-block" *ngIf="(passwordVar.touched ||
                                                                  passwordVar.dirty) &&
