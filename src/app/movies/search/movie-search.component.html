@@ -1,3 +1,80 @@
-<p>
-  movie-search works!
-</p>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{ pageTitle }}
+    </div>
+    
+    <div class="panel-body">
+      <form class="form-horizontal" novalidate #searchForm="ngForm">
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="inputMovieTitle">Movie Title</label>
+
+            <div class="col-md-8">
+                <input class="form-control" 
+                       id="inputMovieTitle" 
+                       type="text"
+                       name="title"
+                       ngModel />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="inputMovieDirector">Director</label>
+
+            <div class="col-md-8">
+                <input class="form-control" 
+                      id="inputMovieDirector" 
+                      type="text" 
+                      name="director"
+                      ngModel />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="inputStarRating">Min Star Rating (1-5)</label>
+
+            <div class="col-md-8">
+                <input class="form-control" 
+                      id="inputStarRating" 
+                      type="number" 
+                      name="minStarRating"
+                      ngModel />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="inputStarRating">Max Star Rating (1-5)</label>
+
+            <div class="col-md-8">
+                <input class="form-control" 
+                      id="inputStarRating" 
+                      type="number" 
+                      name="maxStarRating"
+                      ngModel />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="inputMovieDescription">Description</label>
+
+            <div class="col-md-8">
+                <textarea class="form-control" 
+                          id="inputMovieDescription" 
+                          rows=3 
+                          name="description"
+                          ngModel>
+                </textarea>
+            </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="panel-footer">
+        <a class="btn btn-primary"
+                style="width:80px;margin-right:10px"
+                (click)="search(searchForm.value)">
+            Search
+        </a>
+    </div>
+    
+    <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+</div>

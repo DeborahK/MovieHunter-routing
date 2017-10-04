@@ -51,7 +51,7 @@
                         <td><a [routerLink]="['/movies', movie.id]">{{ movie.title }}</a></td>
                         <td>{{ movie.director }}</td>
                         <td>{{ movie.releaseDate | date}}</td>
-                        <td>{{ movie.mpaa | uppercase | convertToSpaces: '-'}}</td>
+                        <td>{{ movie.mpaa | uppercase }}</td>
                         <td>{{ movie.price | currency:'USD':true}}</td>
                         <td>
                             <mh-star [rating]="movie.starRating"></mh-star>

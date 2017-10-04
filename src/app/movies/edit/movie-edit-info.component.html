@@ -9,16 +9,16 @@
                     <input class="form-control" id="inputMovieTitle" type="text" placeholder="Title (required)" required minlength="3" maxlength="50"
                         [(ngModel)]="movie.title" name="title" #titleVar="ngModel" />
                     <span class="help-block" *ngIf="(titleVar.touched || titleVar.dirty) && titleVar.errors">
-                   <span *ngIf="titleVar.errors.required">
-                       Please enter a movie title.
+                        <span *ngIf="titleVar.errors.required">
+                            Please enter a movie title.
+                        </span>
+                        <span *ngIf="titleVar.errors.minlength">
+                            The movie title must be at least 3 characters.
+                        </span>
+                        <span *ngIf="titleVar.errors.maxlength">
+                            The movie title cannot exceed 50 characters.
+                        </span>
                    </span>
-                    <span *ngIf="titleVar.errors.minlength">
-                       The movie title must be at least 3 characters.
-                   </span>
-                    <span *ngIf="titleVar.errors.maxlength">
-                       The movie title cannot exceed 50 characters.
-                   </span>
-                    </span>
                 </div>
             </div>
 
@@ -29,15 +29,15 @@
                     <input class="form-control" id="inputMovieDirector" type="text" placeholder="Director (required)" required minlength="5"
                         maxlength="50" [(ngModel)]="movie.director" name="director" #directorVar="ngModel" />
                     <span class="help-block" *ngIf="(directorVar.touched || directorVar.dirty) && directorVar.errors">
-                   <span *ngIf="directorVar.errors.required">
-                       Please enter the director's name.
-                   </span>
-                    <span *ngIf="directorVar.errors.minlength">
-                       The name must be at least 5 characters.
-                   </span>
-                    <span *ngIf="directorVar.errors.maxlength">
-                       The name cannot exceed 50 characters.
-                   </span>
+                        <span *ngIf="directorVar.errors.required">
+                            Please enter the director's name.
+                        </span>
+                        <span *ngIf="directorVar.errors.minlength">
+                            The name must be at least 5 characters.
+                        </span>
+                        <span *ngIf="directorVar.errors.maxlength">
+                            The name cannot exceed 50 characters.
+                        </span>
                     </span>
                 </div>
             </div>

@@ -30,8 +30,8 @@ export class MovieEditComponent implements OnInit {
     }
 
     constructor(private route: ActivatedRoute,
-        private router: Router,
-        private movieService: MovieService) { }
+                private router: Router,
+                private movieService: MovieService) { }
 
     ngOnInit(): void {
         // Watch for changes to the resolve data
