@@ -21,7 +21,7 @@ import { UserModule } from './user/user.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(MovieData, { delay: 1000, dataEncapsulation: false }),    
+    HttpClientInMemoryWebApiModule.forRoot(MovieData, { delay: 1000, dataEncapsulation: false }),
     UserModule,
     AppRoutingModule
   ],

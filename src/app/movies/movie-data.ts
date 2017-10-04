@@ -32,8 +32,8 @@ export class MovieData implements InMemoryDbService {
                 'price': 14.95,
                 'starRating': 4.2,
                 'approvalRating': 0.94,
-                "category": "action",
-                "tags": ["action", "adventure", "hobbits"]
+                'category': 'action',
+                'tags': ['action', 'adventure', 'hobbits']
             },
             {
                 'id': 3,
@@ -46,8 +46,8 @@ export class MovieData implements InMemoryDbService {
                 'price': 15.95,
                 'starRating': 4.5,
                 'approvalRating': 0.9895,
-                "category": "action",
-                "tags": ["action", "adventure", "hobbits"]
+                'category': 'action',
+                'tags': ['action', 'adventure', 'hobbits']
             },
             {
                 'id': 4,
@@ -60,8 +60,8 @@ export class MovieData implements InMemoryDbService {
                 'price': 9.95,
                 'starRating': 4.9,
                 'approvalRating': 0.9295,
-                "category": "animation",
-                "tags": ["action", "animation"]
+                'category': 'animation',
+                'tags': ['action', 'animation']
             },
             {
                 'id': 5,
@@ -74,8 +74,8 @@ export class MovieData implements InMemoryDbService {
                 'price': 5.59,
                 'starRating': 2.7,
                 'approvalRating': 0.17,
-                "category": "animation",
-                "tags": ["action", "animation"]
+                'category': 'animation',
+                'tags': ['action', 'animation']
             }
         ];
         return { movies };

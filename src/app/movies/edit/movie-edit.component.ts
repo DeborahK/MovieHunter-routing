@@ -57,8 +57,9 @@ export class MovieEditComponent implements OnInit {
             this.onSaveComplete(`${this.movie.title} was deleted`);
         } else {
             if (confirm(`Really delete the movie: ${this.movie.title}?`)) {
-                this.movieService.deleteMovie(this.movie.id);
-                this.onSaveComplete(`${this.movie.title} was deleted`);
+                this.movieService.deleteMovie(this.movie.id).subscribe(
+                    () => this.onSaveComplete(`${this.movie.title} was deleted`)
+                );
             }
         }
     }
@@ -74,8 +75,9 @@ export class MovieEditComponent implements OnInit {
 
     saveMovie(): void {
         if (this.isValid(null)) {
-            this.movieService.saveMovie(this.movie);
-            this.onSaveComplete(`${this.movie.title} was saved`);
+            this.movieService.saveMovie(this.movie).subscribe(
+                () => this.onSaveComplete(`${this.movie.title} was saved`)
+            );
         } else {
             this.errorMessage = 'Please correct the validation errors.';
         }

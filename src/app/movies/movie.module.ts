@@ -23,7 +23,7 @@ import { MovieSearchComponent } from './search/movie-search.component';
       { path: 'search', component: MovieSearchComponent },
       {
         path: ':id',
-        resolve: { product: MovieResolver },
+        resolve: { movie: MovieResolver },
         component: MovieDetailComponent
       },
       {

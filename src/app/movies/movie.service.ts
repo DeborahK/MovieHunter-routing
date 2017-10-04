@@ -27,7 +27,7 @@ export class MovieService {
     getMovie(id: number): Observable<IMovie> {
         if (id === 0) {
             return Observable.of(this.initializeMovie());
-        };
+        }
         const url = `${this.moviesUrl}/${id}`;
         return this.http.get<IMovie>(url)
                         .do(data => console.log('Data: ' + JSON.stringify(data)))
