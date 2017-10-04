@@ -17,8 +17,8 @@ import { PageNotFoundComponent } from './home/page-not-found.component';
                     { path: 'welcome', component: WelcomeComponent },
                     {
                         path: 'movies',
-                        loadChildren: './movies/movie.module#MovieModule',
-                        canActivate: [AuthGuard]
+                        canActivate: [AuthGuard],
+                        loadChildren: './movies/movie.module#MovieModule'
                     },
                     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
                 ]
