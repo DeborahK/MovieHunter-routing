@@ -64,7 +64,7 @@ export class MovieEditComponent implements OnInit {
         }
     }
 
-    isValid(path: string): boolean {
+    isValid(path?: string): boolean {
         this.validate();
         if (path) {
             return this.dataIsValid[path];
@@ -74,7 +74,7 @@ export class MovieEditComponent implements OnInit {
     }
 
     saveMovie(): void {
-        if (this.isValid(null)) {
+        if (this.isValid()) {
             this.movieService.saveMovie(this.movie).subscribe(
                 () => this.onSaveComplete(`${this.movie.title} was saved`)
             );

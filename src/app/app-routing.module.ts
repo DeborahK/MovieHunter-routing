@@ -7,15 +7,6 @@ import { ShellComponent } from './home/shell.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './home/page-not-found.component';
 
-// Feature modules
-import { MovieModule } from './movies/movie.module';
-
-// Needed for AoT compiler
-// For JIT: () => MovieModule
-export function _movieModuleLoader() {
-    return MovieModule;
-}
-
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -26,7 +17,7 @@ export function _movieModuleLoader() {
                     { path: 'welcome', component: WelcomeComponent },
                     {
                         path: 'movies',
-                        loadChildren: _movieModuleLoader,
+                        loadChildren: './movies/movie.module#MovieModule',
                         canActivate: [AuthGuard]
                     },
                     { path: '', redirectTo: 'welcome', pathMatch: 'full' },

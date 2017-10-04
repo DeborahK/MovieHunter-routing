@@ -11,6 +11,8 @@ import { AuthService } from './auth.service';
 export class LoginComponent {
     errorMessage: string;
     pageTitle = 'Log In';
+    userName: string;
+    password: string;
 
     constructor(private authService: AuthService,
                 private router: Router) {
@@ -22,9 +24,9 @@ export class LoginComponent {
 
     login(loginForm: NgForm): void {
         if (loginForm && loginForm.valid) {
-            const userName = loginForm.form.value.userName;
-            const password = loginForm.form.value.password;
-            this.authService.login(userName, password);
+            //const userName = loginForm.form.value.userName;
+            //const password = loginForm.form.value.password;
+            this.authService.login(this.userName, this.password);
 
             if (this.authService.redirectUrl) {
                 this.router.navigateByUrl(this.authService.redirectUrl);

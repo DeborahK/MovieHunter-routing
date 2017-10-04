@@ -7,7 +7,6 @@ import { Router, Event, NavigationStart, NavigationEnd, NavigationError, Navigat
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    pageTitle: string = 'InStep Movie Hunter';
     loading: boolean = true;
 
     constructor(private router: Router) {

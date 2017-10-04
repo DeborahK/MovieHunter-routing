@@ -8,6 +8,15 @@ import { AuthService } from '../user/auth.service';
   templateUrl: './menu.component.html'
 })
 export class MenuComponent implements OnInit {
+  pageTitle: string = 'InStep Movie Hunter';
+  
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  get userName(): string {
+    return this.authService.currentUser.userName;
+  }
 
   constructor(private router: Router,
               private authService: AuthService) { }
