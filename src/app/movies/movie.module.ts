@@ -29,6 +29,7 @@ import { MovieSearchComponent } from './search/movie-search.component';
       {
         path: ':id/edit',
         resolve: { movie: MovieResolver },
+        canDeactivate: [ MovieEditGuard ],
         component: MovieEditComponent,
         children: [
           { path: '', redirectTo: 'info', pathMatch: 'full' },
