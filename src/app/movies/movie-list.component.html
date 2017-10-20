@@ -52,7 +52,7 @@
                         <td>{{ movie.director }}</td>
                         <td>{{ movie.releaseDate | date}}</td>
                         <td>{{ movie.mpaa | uppercase }}</td>
-                        <td>{{ movie.price | currency:'USD':true}}</td>
+                        <td>{{ movie.price | currency:'USD':'symbol'}}</td>
                         <td>
                             <mh-star [rating]="movie.starRating"></mh-star>
                         </td>
