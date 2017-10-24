@@ -14,6 +14,9 @@
             <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <a [routerLink]="['/movies', 0, 'edit']">Add Movie</a>
             </li>
+            <!-- <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['/movies', 0, 'editReactive']">Add Movie (Reactive)</a>
+            </li> -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li *ngIf="isLoggedIn">

@@ -23,6 +23,41 @@ export class MovieEditReactiveComponent implements OnInit {
                 private router: Router,
                 private route: ActivatedRoute) {
 
+        // Without FormBuilder
+        // this.editForm = new FormGroup({
+        //     title: new FormControl('', [Validators.required,
+        //                                 Validators.minLength(3),
+        //                                 Validators.maxLength(50)]),
+        //     director: new FormControl('', [Validators.required,
+        //                                    Validators.minLength(5),
+        //                                    Validators.maxLength(50)]),
+        //     starRating: new FormControl('', NumberValidators.range(1, 5)),
+        //     description: new FormControl('')
+        // });
+
+        // With FormBuilder
+        this.editForm = this.fb.group({
+            'title': ['', [Validators.required,
+                           Validators.minLength(3),
+                           Validators.maxLength(50)]],
+            'director': ['', [Validators.required,
+                              Validators.minLength(5),
+                              Validators.maxLength(50)]],
+            'starRating': ['', NumberValidators.range(1, 5)],
+            'description': ['']
+        });
+
+        // Watch all of the controls on the form
+        this.editForm.valueChanges
+            .subscribe(data => this.onValueChanged(data));
+        // this.editForm.valueChanges
+        //         .debounceTime(500)
+        //         .subscribe(data => this.onValueChanged(data));
+
+        // Watch one control on the form.
+        this.editForm.get('title').valueChanges
+                     .subscribe(value => console.log(`Title Changed to: ${value}`));
+
         // Initialize strings
         this.formError = {
             'title': '',
@@ -76,35 +111,13 @@ export class MovieEditReactiveComponent implements OnInit {
             this.pageTitle = `Edit Movie (Reactive): ${this.movie.title}`;
         }
 
-        // Without FormBuilder
-        // this.editForm = new FormGroup({
-        //     title: new FormControl(this.movie.title, [Validators.required,
-        //                                               Validators.minLength(3),
-        //                                               Validators.maxLength(50)]),
-        //     director: new FormControl(this.movie.director, [Validators.required,
-        //                                                     Validators.minLength(5),
-        //                                                     Validators.maxLength(50)]),
-        //     starRating: new FormControl(this.movie.starRating, NumberValidators.range(1, 5)),
-        //     description: new FormControl(this.movie.description)
-        // });
-
-        // With FormBuilder
-        this.editForm = this.fb.group({
-            'title': [this.movie.title, [Validators.required,
-                                         Validators.minLength(3),
-                                         Validators.maxLength(50)]],
-            'director': [this.movie.director, [Validators.required,
-                                               Validators.minLength(5),
-                                               Validators.maxLength(50)]],
-            'starRating': [this.movie.starRating, NumberValidators.range(1, 5)],
-            'description': [this.movie.description]
+        // Update the data on the form
+        this.editForm.patchValue({
+            title: this.movie.title,
+            director: this.movie.director,
+            starRating: this.movie.starRating,
+            description: this.movie.description
         });
-
-        this.editForm.valueChanges
-            .subscribe(data => this.onValueChanged(data));
-        // this.editForm.valueChanges
-        //         .debounceTime(500)
-        //         .subscribe(data => this.onValueChanged(data));
     }
 
     // Start of a generic validator
