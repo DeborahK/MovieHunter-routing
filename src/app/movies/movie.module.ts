@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MovieListComponent } from './movie-list.component';
 import { MovieDetailComponent } from './movie-detail.component';
@@ -14,10 +15,12 @@ import { MovieParameterService } from './movie-parameter.service';
 import { MovieResolver } from './movie-resolver.service';
 import { MovieEditGuard } from './edit/movie-edit-guard.service';
 import { MovieSearchComponent } from './search/movie-search.component';
+import { MovieEditReactiveComponent } from './edit/movie-edit-reactive.component';
 
 @NgModule({
   imports: [
     SharedModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       { path: '', component: MovieListComponent },
       { path: 'search', component: MovieSearchComponent },
@@ -27,6 +30,10 @@ import { MovieSearchComponent } from './search/movie-search.component';
         component: MovieDetailComponent
       },
       {
+        path: ':id/editReactive',
+        resolve: { movie: MovieResolver },
+        component: MovieEditReactiveComponent
+      },      {
         path: ':id/edit',
         resolve: { movie: MovieResolver },
         canDeactivate: [ MovieEditGuard ],
@@ -45,6 +52,7 @@ import { MovieSearchComponent } from './search/movie-search.component';
     MovieEditComponent,
     MovieEditInfoComponent,
     MovieEditTagsComponent,
+    MovieEditReactiveComponent,
     MovieSearchComponent
   ],
   providers: [

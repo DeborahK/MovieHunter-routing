@@ -23,5 +23,6 @@ export class MovieEditInfoComponent implements OnInit {
                 this.movieForm.reset();
             }
         });
+        console.log(this.movieForm);
     }
 }
