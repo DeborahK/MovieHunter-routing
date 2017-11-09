@@ -2,13 +2,23 @@
     <form class="form-horizontal" novalidate #movieForm="ngForm">
         <fieldset>
             <legend>Basic Movie Information</legend>
-            <div class="form-group" [ngClass]="{'has-error': (titleVar.touched || titleVar.dirty) && !titleVar.valid }">
+            <div class="form-group" 
+                 [ngClass]="{'has-error': (titleVar.touched || titleVar.dirty) && !titleVar.valid }">
                 <label class="col-md-2 control-label" for="inputMovieTitle">Movie Title</label>
 
                 <div class="col-md-8">
-                    <input class="form-control" id="inputMovieTitle" type="text" placeholder="Title (required)" required minlength="3" maxlength="50"
-                        [(ngModel)]="movie.title" name="title" #titleVar="ngModel" />
-                    <span class="help-block" *ngIf="(titleVar.touched || titleVar.dirty) && titleVar.errors">
+                    <input class="form-control" 
+                           id="inputMovieTitle" 
+                           type="text" 
+                           placeholder="Title (required)" 
+                           required 
+                           minlength="3" 
+                           maxlength="50"
+                           [(ngModel)]="movie.title" 
+                           name="title" 
+                           #titleVar="ngModel" />
+                    <span class="help-block" 
+                          *ngIf="(titleVar.touched || titleVar.dirty) && titleVar.errors">
                         <span *ngIf="titleVar.errors.required">
                             Please enter a movie title.
                         </span>
