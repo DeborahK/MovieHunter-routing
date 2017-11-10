@@ -123,11 +123,11 @@ export class MovieEditReactiveComponent implements OnInit {
     // Start of a generic validator
     onValueChanged(data: any): void {
         Object.keys(this.formError).forEach(field => {
-            const hasError = this.editForm.controls[field].dirty &&
-                !this.editForm.controls[field].valid;
+            const hasError = this.editForm.get(field).dirty &&
+                !this.editForm.get(field).valid;
             this.formError[field] = '';
             if (hasError) {
-                Object.keys(this.editForm.controls[field].errors).forEach(key =>
+                Object.keys(this.editForm.get(field).errors).forEach(key =>
                         this.formError[field] += this.validationMessages[field][key] + ' '
                 );
             }

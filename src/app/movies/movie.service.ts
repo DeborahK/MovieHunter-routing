@@ -53,27 +53,6 @@ export class MovieService {
         return _throw(errorMessage);
     }
 
-    private handleMap(movies: IMovie[], id: number): IMovie {
-        // Return an initialized object
-        if (id === 0) {
-            return {
-                'id': 0,
-                'approvalRating': null,
-                'description': '',
-                'director': '',
-                'imageurl': '',
-                'mpaa': '',
-                'price': null,
-                'releaseDate': '',
-                'starRating': null,
-                'title': '',
-                'category': '',
-                'tags': []
-            };
-        }
-        return movies.find(m => m.id === id);
-    }
-
     deleteMovie(id: number): Observable<Response> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
