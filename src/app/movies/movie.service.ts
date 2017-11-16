@@ -37,6 +37,9 @@ export class MovieService {
                             tap(data => console.log('Data: ' + JSON.stringify(data))),
                             catchError(this.handleError)
                         );
+        // return this.http.get<IMovie[]>(this.moviesUrl)
+        //                 .do(data => console.log(JSON.stringify(data)))
+        //                 .catch(this.handleError);
     }
 
     private handleError(err: HttpErrorResponse): ErrorObservable {
