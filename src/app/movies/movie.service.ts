@@ -6,6 +6,9 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { of } from 'rxjs/observable/of';
 import { _throw } from 'rxjs/observable/throw';
 
+// import 'rxjs/add/operator/catch';
+// import 'rxjs/add/operator/do';
+// import 'rxjs/add/operator/map';
 import { catchError, tap, map } from 'rxjs/operators';
 
 import { IMovie } from './movie';
