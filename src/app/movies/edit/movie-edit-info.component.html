@@ -32,13 +32,22 @@
                 </div>
             </div>
 
-            <div class="form-group" [ngClass]="{'has-error': (directorVar.touched || directorVar.dirty) && !directorVar.valid }">
+            <div class="form-group" 
+                 [ngClass]="{'has-error': (directorVar.touched || directorVar.dirty) && !directorVar.valid }">
                 <label class="col-md-2 control-label" for="inputMovieDirector">Director</label>
 
                 <div class="col-md-8">
-                    <input class="form-control" id="inputMovieDirector" type="text" placeholder="Director (required)" required minlength="5"
-                        maxlength="50" [(ngModel)]="movie.director" name="director" #directorVar="ngModel" />
-                    <span class="help-block" *ngIf="(directorVar.touched || directorVar.dirty) && directorVar.errors">
+                    <input class="form-control" 
+                           id="inputMovieDirector" 
+                           type="text" 
+                           placeholder="Director (required)" 
+                           required minlength="5"
+                           maxlength="50" 
+                           [(ngModel)]="movie.director" 
+                           name="director" 
+                           #directorVar="ngModel" />
+                    <span class="help-block" 
+                          *ngIf="(directorVar.touched || directorVar.dirty) && directorVar.errors">
                         <span *ngIf="directorVar.errors.required">
                             Please enter the director's name.
                         </span>

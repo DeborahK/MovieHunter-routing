@@ -37,14 +37,14 @@ export class MovieEditReactiveComponent implements OnInit {
 
         // With FormBuilder
         this.editForm = this.fb.group({
-            'title': ['', [Validators.required,
+            title: ['', [Validators.required,
                            Validators.minLength(3),
                            Validators.maxLength(50)]],
-            'director': ['', [Validators.required,
+            director: ['', [Validators.required,
                               Validators.minLength(5),
                               Validators.maxLength(50)]],
-            'starRating': ['', NumberValidators.range(1, 5)],
-            'description': ['']
+            starRating: ['', NumberValidators.range(1, 5)],
+            description: ['']
         });
 
         // Watch all of the controls on the form
