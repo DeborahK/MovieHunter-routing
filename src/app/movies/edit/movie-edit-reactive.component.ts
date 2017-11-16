@@ -127,8 +127,8 @@ export class MovieEditReactiveComponent implements OnInit {
                 !this.editForm.get(field).valid;
             this.formError[field] = '';
             if (hasError) {
-                Object.keys(this.editForm.get(field).errors).forEach(key =>
-                        this.formError[field] += this.validationMessages[field][key] + ' '
+                Object.keys(this.editForm.get(field).errors).forEach(rule =>
+                        this.formError[field] += this.validationMessages[field][rule] + ' '
                 );
             }
         });
