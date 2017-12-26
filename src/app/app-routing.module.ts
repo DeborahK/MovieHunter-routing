@@ -7,11 +7,11 @@ import { ShellComponent } from './home/shell.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './home/page-not-found.component';
 
-// import { MovieModule } from './movies/movie.module';
+import { MovieModule } from './movies/movie.module';
 
-// export function _movieModuleLoader() {
-//     return MovieModule;
-//  }
+export function _movieModuleLoader() {
+    return MovieModule;
+ }
 
 @NgModule({
     imports: [
@@ -24,7 +24,7 @@ import { PageNotFoundComponent } from './home/page-not-found.component';
                     {
                         path: 'movies',
                         canActivate: [AuthGuard],
-                        loadChildren: './movies/movie.module#MovieModule'  // _movieModuleLoader
+                        loadChildren: _movieModuleLoader
                     },
                     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
                 ]
