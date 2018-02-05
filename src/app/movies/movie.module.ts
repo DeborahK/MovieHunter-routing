@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -17,34 +17,37 @@ import { MovieEditGuard } from './edit/movie-edit-guard.service';
 import { MovieSearchComponent } from './search/movie-search.component';
 import { MovieEditReactiveComponent } from './edit/movie-edit-reactive.component';
 
+export const movieRoutes: Routes = [
+  { path: '', component: MovieListComponent },
+  { path: 'search', component: MovieSearchComponent },
+  {
+    path: ':id',
+    resolve: { movie: MovieResolver },
+    component: MovieDetailComponent
+  },
+  {
+    path: ':id/editReactive',
+    resolve: { movie: MovieResolver },
+    component: MovieEditReactiveComponent
+  },
+  {
+    path: ':id/edit',
+    resolve: { movie: MovieResolver },
+    canDeactivate: [ MovieEditGuard ],
+    component: MovieEditComponent,
+    children: [
+      { path: '', redirectTo: 'info', pathMatch: 'full' },
+      { path: 'info', component: MovieEditInfoComponent },
+      { path: 'tags', component: MovieEditTagsComponent }
+    ]
+  }
+];
+
 @NgModule({
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    RouterModule.forChild([
-      { path: '', component: MovieListComponent },
-      { path: 'search', component: MovieSearchComponent },
-      {
-        path: ':id',
-        resolve: { movie: MovieResolver },
-        component: MovieDetailComponent
-      },
-      {
-        path: ':id/editReactive',
-        resolve: { movie: MovieResolver },
-        component: MovieEditReactiveComponent
-      },      {
-        path: ':id/edit',
-        resolve: { movie: MovieResolver },
-        canDeactivate: [ MovieEditGuard ],
-        component: MovieEditComponent,
-        children: [
-          { path: '', redirectTo: 'info', pathMatch: 'full' },
-          { path: 'info', component: MovieEditInfoComponent },
-          { path: 'tags', component: MovieEditTagsComponent }
-        ]
-      }
-    ])
+    RouterModule // RouterModule.forChild(movieRoutes)
   ],
   declarations: [
     MovieListComponent,
