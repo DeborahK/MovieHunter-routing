@@ -10,7 +10,7 @@ import { movieRoutes, MovieModule } from './movies/movie.module';
 
 // To change to lazy loading:
 // 1) Change 'children' to 'loadChildren' below.
-// 2) Remove MovieModule import statement above.
+// 2) Remove movieRoutes, MovieModule import statement above.
 // 3) Remove MovieModule from the imports array below.
 // 4) In the movie.module.ts file, in the imports array
 //    replace `RouterModule` with `RouterModule.forChild(movieRoutes)
