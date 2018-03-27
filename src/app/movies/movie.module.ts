@@ -17,7 +17,7 @@ import { MovieEditGuard } from './edit/movie-edit-guard.service';
 import { MovieSearchComponent } from './search/movie-search.component';
 import { MovieEditReactiveComponent } from './edit/movie-edit-reactive.component';
 
-export const movieRoutes: Routes = [
+const movieRoutes: Routes = [
   { path: '', component: MovieListComponent },
   { path: 'search', component: MovieSearchComponent },
   {
@@ -47,7 +47,7 @@ export const movieRoutes: Routes = [
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    RouterModule // RouterModule.forChild(movieRoutes)
+    RouterModule.forChild(movieRoutes)
   ],
   declarations: [
     MovieListComponent,

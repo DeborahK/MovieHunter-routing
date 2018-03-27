@@ -24,7 +24,7 @@ export class MovieData implements InMemoryDbService {
             {
                 'id': 2,
                 'director': 'Peter Jackson',
-                'description': "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron/'s new ally, Saruman, and his hordes of Isengard.",
+                'description': 'While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron\'s new ally, Saruman, and his hordes of Isengard.',
                 'imageurl': 'https://www.movieposter.com/posters/archive/main/7/MPW-3576',
                 'mpaa': 'pg-13',
                 'releaseDate': '2002-12-18T00:00:00',
@@ -38,7 +38,7 @@ export class MovieData implements InMemoryDbService {
             {
                 'id': 3,
                 'director': 'Peter Jackson',
-                'description': "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+                'description': 'Gandalf and Aragorn lead the World of Men against Sauron\'s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.',
                 'imageurl': 'https://www.movieposter.com/posters/archive/main/17/MPW-8715',
                 'mpaa': 'pg-13',
                 'releaseDate': '2003-12-17T00:00:00',
@@ -52,7 +52,7 @@ export class MovieData implements InMemoryDbService {
             {
                 'id': 4,
                 'director': 'Fred Wolf',
-                'description': "An animated story of an unusual kingdom in which everything and everybody is pointed - except for a young boy named Oblio. Despite his round head, Oblio has many friends. But an evil count, jealous that Oblio is more popular than his own son, says that without a pointed head, Oblio is an outlaw. Along with his faithful dog Arrow, Oblio is exiled to the Pointless Forest. There, he has many fantastic experiences (including encounters with a 3-headed man, giant bees, a tree in the leaf-selling business, and a good-humored old rock). From his adventures, Oblio learns that it is not at all necessary to be pointed to have a point in life. Music composed and performed by Harry Nilsson ('Me and My Arrow'), who also wrote the story. ",
+                'description': 'An animated story of an unusual kingdom in which everything and everybody is pointed - except for a young boy named Oblio. Despite his round head, Oblio has many friends. But an evil count, jealous that Oblio is more popular than his own son, says that without a pointed head, Oblio is an outlaw. Along with his faithful dog Arrow, Oblio is exiled to the Pointless Forest. There, he has many fantastic experiences (including encounters with a 3-headed man, giant bees, a tree in the leaf-selling business, and a good-humored old rock). From his adventures, Oblio learns that it is not at all necessary to be pointed to have a point in life. Music composed and performed by Harry Nilsson (\'Me and My Arrow\'), who also wrote the story.',
                 'imageurl': '',
                 'mpaa': 'nr',
                 'releaseDate': '1971-02-02T00:00:00',

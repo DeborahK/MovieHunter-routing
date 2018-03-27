@@ -6,14 +6,6 @@ import { AuthGuard } from './user/auth-guard.service';
 import { ShellComponent } from './home/shell.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './home/page-not-found.component';
-import { movieRoutes, MovieModule } from './movies/movie.module';
-
-// To change to lazy loading:
-// 1) Change 'children' to 'loadChildren' below.
-// 2) Remove movieRoutes, MovieModule import statement above.
-// 3) Remove MovieModule from the imports array below.
-// 4) In the movie.module.ts file, in the imports array
-//    replace `RouterModule` with `RouterModule.forChild(movieRoutes)
 
 const appRoutes: Routes = [
     {
@@ -24,8 +16,7 @@ const appRoutes: Routes = [
             {
                 path: 'movies',
                 canActivate: [AuthGuard],
-                children: movieRoutes
-                // loadChildren: './movies/movie.module#MovieModule'
+                loadChildren: './movies/movie.module#MovieModule'
             },
             { path: '', redirectTo: 'welcome', pathMatch: 'full' }
         ]
@@ -35,7 +26,6 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [
-        MovieModule,
         RouterModule.forRoot(appRoutes)
         // RouterModule.forRoot(appRoutes, { enableTracing: true })
     ],
