@@ -12,8 +12,8 @@ import { MovieEditTagsComponent } from './edit/movie-edit-tags.component';
 
 import { MovieService } from './movie.service';
 import { MovieParameterService } from './movie-parameter.service';
-import { MovieResolver } from './movie-resolver.service';
-import { MovieEditGuard } from './edit/movie-edit-guard.service';
+import { MovieResolver } from './movie.resolver';
+import { MovieEditGuard } from './edit/movie-edit.guard';
 import { MovieSearchComponent } from './search/movie-search.component';
 import { MovieEditReactiveComponent } from './edit/movie-edit-reactive.component';
 
