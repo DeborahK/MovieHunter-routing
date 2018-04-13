@@ -35,8 +35,13 @@ export class MovieListComponent implements OnInit {
                 private route: ActivatedRoute) { }
 
     ngOnInit(): void {
-        this.route.queryParams.subscribe(param => {
+        this.route.queryParams.subscribe(params => {
             this.pageTitle = 'Movie List';
+            // If parameters are passed in,
+            // clear any existing filter
+            if (Object.keys(params).length) {
+              this.listFilter = null;
+            }
             this.getMovies();
         });
     }
