@@ -8,14 +8,12 @@
       <a [routerLink]="['info']"
          routerLinkActive="active">
         Basic Information
-        <span [ngClass]="{'fa fa-exclamation': !isValid('info')}"
-              style="color:red"></span>
+        <span [ngClass]="{'fa fa-exclamation': !isValid('info')}"></span>
       </a>
       <a [routerLink]="['tags']"
          routerLinkActive="active">
         Search Tags
-        <span [ngClass]="{'fa fa-exclamation': !isValid('tags')}"
-              style="color:red"></span>
+        <span [ngClass]="{'fa fa-exclamation': !isValid('tags')}"></span>
       </a>
     </div>
 

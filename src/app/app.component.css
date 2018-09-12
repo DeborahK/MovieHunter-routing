@@ -7,7 +7,7 @@
     z-index:10
   }
   
-  .glyphicon-spin {
+  .fa-spinner {
       -webkit-animation: spin 1000ms infinite linear;
       animation: spin 1000ms infinite linear;
   }
