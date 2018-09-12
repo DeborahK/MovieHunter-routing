@@ -5,17 +5,22 @@ import { AuthService } from '../user/auth.service';
 
 @Component({
   selector: 'mh-menu',
-  templateUrl: './menu.component.html'
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  pageTitle: string = 'InStep Movie Hunter';
+  pageTitle = 'InStep Movie Hunter';
 
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
 
-  get userName(): string {
-    return this.authService.currentUser.userName;
+  get userName(): string | null {
+    if (this.authService.currentUser) {
+      return this.authService.currentUser.userName;
+    } else {
+      return null;
+    }
   }
 
   constructor(private router: Router,

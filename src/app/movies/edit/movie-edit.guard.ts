@@ -3,7 +3,9 @@ import { CanDeactivate } from '@angular/router';
 
 import { MovieEditComponent } from './movie-edit.component';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MovieEditGuard implements CanDeactivate<MovieEditComponent> {
 
     canDeactivate(component: MovieEditComponent): boolean {

@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./movie-search.component.css']
 })
 export class MovieSearchComponent implements OnInit {
-  pageTitle: string = 'Advanced Search';
+  pageTitle = 'Advanced Search';
   errorMessage: string;
 
   constructor(private router: Router) { }

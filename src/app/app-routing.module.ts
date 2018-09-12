@@ -8,27 +8,27 @@ import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './home/page-not-found.component';
 
 const appRoutes: Routes = [
-    {
-        path: '',
-        component: ShellComponent,
-        children: [
-            { path: 'welcome', component: WelcomeComponent },
-            {
-                path: 'movies',
-                canActivate: [AuthGuard],
-                loadChildren: './movies/movie.module#MovieModule'
-            },
-            { path: '', redirectTo: 'welcome', pathMatch: 'full' }
-        ]
-    },
-    { path: '**', component: PageNotFoundComponent }
+  {
+    path: '',
+    component: ShellComponent,
+    children: [
+      { path: 'welcome', component: WelcomeComponent },
+      {
+        path: 'movies',
+        canActivate: [AuthGuard],
+        loadChildren: './movies/movie.module#MovieModule'
+      },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' }
+    ]
+  },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot(appRoutes)
-        // RouterModule.forRoot(appRoutes, { enableTracing: true })
-    ],
-    exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(appRoutes)
+    // RouterModule.forRoot(appRoutes, { enableTracing: true })
+  ],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

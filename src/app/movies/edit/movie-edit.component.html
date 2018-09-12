@@ -1,51 +1,52 @@
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        {{pageTitle}}
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class="card-body">
+    <div class="wizard">
+      <a [routerLink]="['info']"
+         routerLinkActive="active">
+        Basic Information
+        <span [ngClass]="{'fa fa-exclamation': !isValid('info')}"
+              style="color:red"></span>
+      </a>
+      <a [routerLink]="['tags']"
+         routerLinkActive="active">
+        Search Tags
+        <span [ngClass]="{'fa fa-exclamation': !isValid('tags')}"
+              style="color:red"></span>
+      </a>
     </div>
 
-    <div class="panel-body">
-        <div class="wizard">
-            <a [routerLink]="['info']" routerLinkActive="active">
-                Basic Information  <span [ngClass]="{'glyphicon glyphicon-exclamation-sign':
-                                                      !isValid('info')}"></span>
-            </a>
-            <a [routerLink]="['tags']" routerLinkActive="active">
-                Search Tags  <span [ngClass]="{'glyphicon glyphicon-exclamation-sign':
-                                                      !isValid('tags')}"></span>
-            </a>
-        </div>
+    <router-outlet></router-outlet>
 
-        <router-outlet></router-outlet>
+    <div class="row">
+      <div class="col-md-4">
+        <button class="btn btn-primary mr-3"
+                type="button"
+                style="width:80px"
+                [disabled]="!isValid()"
+                (click)="saveMovie()">
+          Save
+        </button>
+        <button class="btn btn-outline-secondary mr-3"
+                type="button"
+                style="width:80px"
+                [routerLink]="['/movies']">
+          Cancel
+        </button>
+        <button class="btn btn-outline-warning"
+                type="button"
+                style="width:80px"
+                (click)="deleteMovie()">
+          Delete
+        </button>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div class="panel-footer">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-2">
-                <span>
-                    <button class="btn btn-primary"
-                            type="button"
-                            style="width:80px;margin-right:10px"
-                            [disabled]="!isValid()"
-                            (click)="saveMovie()">
-                        Save
-                    </button>
-                </span>
-                <span>
-                    <a class="btn btn-default"
-                        [routerLink]="['/movies']">
-                        Cancel
-                    </a>
-                </span>
-                <span>
-                    <a class="btn btn-default"
-                        (click)="deleteMovie()">
-                        Delete
-                    </a>
-                </span>       
-            </div>
-        </div>
-    </div>
-
-    <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
-
+<div class="alert alert-danger"
+     *ngIf="errorMessage">{{errorMessage}}
 </div>

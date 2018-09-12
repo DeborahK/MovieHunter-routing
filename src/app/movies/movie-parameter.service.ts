@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MovieParameterService {
-    filterBy: string = '';
-    displayPosters = false;
+  filterBy = '';
+  displayPosters = false;
 }

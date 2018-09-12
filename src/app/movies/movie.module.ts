@@ -10,8 +10,6 @@ import { MovieEditComponent } from './edit/movie-edit.component';
 import { MovieEditInfoComponent } from './edit/movie-edit-info.component';
 import { MovieEditTagsComponent } from './edit/movie-edit-tags.component';
 
-import { MovieService } from './movie.service';
-import { MovieParameterService } from './movie-parameter.service';
 import { MovieResolver } from './movie.resolver';
 import { MovieEditGuard } from './edit/movie-edit.guard';
 import { MovieSearchComponent } from './search/movie-search.component';
@@ -33,7 +31,7 @@ const movieRoutes: Routes = [
   {
     path: ':id/edit',
     resolve: { movie: MovieResolver },
-    canDeactivate: [ MovieEditGuard ],
+    canDeactivate: [MovieEditGuard],
     component: MovieEditComponent,
     children: [
       { path: '', redirectTo: 'info', pathMatch: 'full' },
@@ -57,12 +55,6 @@ const movieRoutes: Routes = [
     MovieEditTagsComponent,
     MovieEditReactiveComponent,
     MovieSearchComponent
-  ],
-  providers: [
-    MovieService,
-    MovieParameterService,
-    MovieResolver,
-    MovieEditGuard
   ]
 })
 export class MovieModule { }

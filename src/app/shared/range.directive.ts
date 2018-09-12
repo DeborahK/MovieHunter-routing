@@ -4,9 +4,9 @@ import { NG_VALIDATORS, Validator, AbstractControl, ValidatorFn } from '@angular
 import { NumberValidators } from './number.validator';
 
 @Directive({
-    selector: '[mhRange][ngModel]',
-    providers: [
-        { provide: NG_VALIDATORS, useExisting: forwardRef(() => RangeValidatorDirective), multi: true }
+  selector: '[mhRange][ngModel]',
+  providers: [
+    { provide: NG_VALIDATORS, useExisting: forwardRef(() => RangeValidatorDirective), multi: true }
   ]
 })
 export class RangeValidatorDirective implements Validator {
@@ -21,7 +21,7 @@ export class RangeValidatorDirective implements Validator {
     this.validator = NumberValidators.range(min, max);
   }
 
-  validate(c: AbstractControl): {[key: string]: any} {
+  validate(c: AbstractControl): { [key: string]: any } {
     return this.validator(c);
   }
 }
