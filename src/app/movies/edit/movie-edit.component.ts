@@ -36,7 +36,8 @@ export class MovieEditComponent implements OnInit {
   ngOnInit(): void {
     // Watch for changes to the resolve data
     this.route.data.subscribe(data => {
-      this.onMovieRetrieved(data['movie']);
+      const dataName = 'movie';
+      this.onMovieRetrieved(data[dataName]);
     });
   }
 
@@ -99,6 +100,9 @@ export class MovieEditComponent implements OnInit {
   }
 
   validate(): void {
+    const infoTab = 'info';
+    const tagsTab = 'tags';
+
     // Clear the validation object
     this.dataIsValid = {};
 
@@ -113,17 +117,17 @@ export class MovieEditComponent implements OnInit {
         this.movie.starRating >= 1 &&
         this.movie.starRating <= 5)
     ) {
-      this.dataIsValid['info'] = true;
+      this.dataIsValid[infoTab] = true;
     } else {
-      this.dataIsValid['info'] = false;
+      this.dataIsValid[infoTab] = false;
     }
 
     // 'tags' tab
     if (this.movie.category &&
       this.movie.category.length >= 3) {
-      this.dataIsValid['tags'] = true;
+      this.dataIsValid[tagsTab] = true;
     } else {
-      this.dataIsValid['tags'] = false;
+      this.dataIsValid[tagsTab] = false;
     }
   }
 }

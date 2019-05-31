@@ -19,7 +19,8 @@ export class MovieDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.movie = this.route.snapshot.data['movie'];
+    const dataName = 'movie';
+    this.movie = this.route.snapshot.data[dataName];
   }
 
   onBack(): void {

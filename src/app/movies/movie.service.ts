@@ -46,7 +46,7 @@ export class MovieService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     const url = `${this.moviesUrl}/${id}`;
-    return this.http.delete<Movie>(url, { headers: headers })
+    return this.http.delete<Movie>(url, { headers })
       .pipe(
         tap(data => console.log('deleteMovie: ' + JSON.stringify(data))),
         catchError(this.handleError)
@@ -55,7 +55,7 @@ export class MovieService {
 
   private createMovie(movie: Movie, headers: HttpHeaders): Observable<Movie> {
     movie.id = null;
-    return this.http.post<Movie>(this.moviesUrl, movie, { headers: headers })
+    return this.http.post<Movie>(this.moviesUrl, movie, { headers })
       .pipe(
         tap(data => console.log('createMovie: ' + JSON.stringify(data))),
         catchError(this.handleError)
@@ -64,7 +64,7 @@ export class MovieService {
 
   private updateMovie(movie: Movie, headers: HttpHeaders): Observable<Movie> {
     const url = `${this.moviesUrl}/${movie.id}`;
-    return this.http.put<Movie>(url, movie, { headers: headers })
+    return this.http.put<Movie>(url, movie, { headers })
       .pipe(
         tap(data => console.log('updateMovie: ' + movie.id)),
         catchError(this.handleError)

@@ -60,25 +60,25 @@ export class MovieEditReactiveComponent implements OnInit {
 
     // Initialize strings
     this.formError = {
-      'title': '',
-      'director': '',
-      'starRating': '',
-      'description': ''
+      title: '',
+      director: '',
+      starRating: '',
+      description: ''
     };
 
     this.validationMessages = {
-      'title': {
-        'required': 'Movie title is required',
-        'minlength': 'Movie title must be at least three characters.',
-        'maxlength': 'Movie title cannot exceed 50 characters.'
+      title: {
+        required: 'Movie title is required',
+        minlength: 'Movie title must be at least three characters.',
+        maxlength: 'Movie title cannot exceed 50 characters.'
       },
-      'director': {
-        'required': 'Director is required',
-        'minlength': 'Director must be at least 5 characters.',
-        'maxlength': 'Director cannot exceed 50 characters.'
+      director: {
+        required: 'Director is required',
+        minlength: 'Director must be at least 5 characters.',
+        maxlength: 'Director cannot exceed 50 characters.'
       },
-      'starRating': {
-        'range': 'Rate the movie between 1 (lowest) and 5 (highest).'
+      starRating: {
+        range: 'Rate the movie between 1 (lowest) and 5 (highest).'
       }
     };
   }
@@ -86,7 +86,8 @@ export class MovieEditReactiveComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(
       params => {
-        const id = +params['id'];
+        const paramName = 'id';
+        const id = +params[paramName];
         this.getMovie(id);
       }
     );
@@ -95,7 +96,7 @@ export class MovieEditReactiveComponent implements OnInit {
   getMovie(id: number): void {
     this.movieService.getMovie(id).subscribe(
       movie => this.onMovieRetrieved(movie),
-      error => this.errorMessage = <any>error
+      error => this.errorMessage = error
     );
   }
 
@@ -142,7 +143,7 @@ export class MovieEditReactiveComponent implements OnInit {
 
       this.movieService.saveMovie(m).subscribe(
         () => this.onSaveComplete(),
-        (error: any) => this.errorMessage = <any>error
+        (error: any) => this.errorMessage = error
       );
     } else if (!this.editForm.dirty) {
       this.onSaveComplete();

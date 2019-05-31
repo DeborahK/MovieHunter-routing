@@ -15,7 +15,8 @@ export class MovieEditTagsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.parent.data.subscribe(data => {
-      this.movie = data['movie'];
+      const dataName = 'movie';
+      this.movie = data[dataName];
     });
   }
 

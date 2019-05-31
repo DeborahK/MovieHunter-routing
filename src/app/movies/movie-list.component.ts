@@ -31,8 +31,8 @@ export class MovieListComponent implements OnInit {
   }
 
   constructor(private movieService: MovieService,
-    private movieParameterService: MovieParameterService,
-    private route: ActivatedRoute) { }
+              private movieParameterService: MovieParameterService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -53,7 +53,8 @@ export class MovieListComponent implements OnInit {
           this.movies = this.performSearch(movies);
           this.filteredMovies = this.performFilter(this.listFilter);
         },
-        (error: any) => this.errorMessage = <any>error);
+        (error: any) => this.errorMessage = error
+      );
   }
 
   // Local filter

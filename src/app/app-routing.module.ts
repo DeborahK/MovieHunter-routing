@@ -16,7 +16,7 @@ const appRoutes: Routes = [
       {
         path: 'movies',
         canActivate: [AuthGuard],
-        loadChildren: './movies/movie.module#MovieModule'
+        loadChildren: () => import('./movies/movie.module').then(m => m.MovieModule)
       },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' }
     ]

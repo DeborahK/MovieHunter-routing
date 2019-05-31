@@ -8,7 +8,7 @@ import { Movie } from '../movie';
   templateUrl: './movie-edit-info.component.html'
 })
 export class MovieEditInfoComponent implements OnInit {
-  @ViewChild(NgForm) movieForm: NgForm;
+  @ViewChild(NgForm, { static: true }) movieForm: NgForm;
 
   errorMessage: string;
   movie: Movie;
@@ -17,7 +17,8 @@ export class MovieEditInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.parent.data.subscribe(data => {
-      this.movie = data['movie'];
+      const dataName = 'movie';
+      this.movie = data[dataName];
 
       if (this.movieForm) {
         this.movieForm.reset();
